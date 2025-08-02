@@ -1,0 +1,165 @@
+/* Reset y box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F3F4F6; /* Gris muy claro */
+  margin: 0;
+  padding: 0;
+  color: #1E3A8A; /* Azul oscuro */
+}
+
+/* Contenedor central */
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #FFFFFF; /* Blanco */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3); /* sombra azul suave */
+}
+
+/* Título principal */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1E3A8A; /* Azul principal */
+  font-weight: 700;
+}
+
+/* Input de búsqueda */
+input#searchInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #3B82F6; /* Azul secundario */
+  border-radius: 6px;
+  font-size: 16px;
+  color: #1E3A8A;
+  transition: border-color 0.3s ease;
+}
+
+input#searchInput:focus {
+  border-color: #1E3A8A; /* Azul oscuro al enfocar */
+  outline: none;
+}
+
+/* Botones letras */
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.letters button {
+  background-color: #3B82F6; /* Azul secundario */
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease-in-out;
+  font-weight: 600;
+}
+
+.letters button:hover {
+  background-color: #1E3A8A; /* Azul principal al hover */
+}
+
+/* Título canción */
+.song-title {
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  color: #1E3A8A;
+  transition: color 0.2s;
+}
+
+.song-title:hover {
+  color: #3B82F6;
+}
+
+/* Letra de canción */
+.lyrics {
+  display: none;
+  white-space: pre-wrap;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #374151; /* gris oscuro */
+  padding-left: 10px;
+  border-left: 3px solid #3B82F6; /* azul secundario */
+}
+
+/* Footer */
+.footer {
+  background-color: #1E3A8A; /* Azul principal */
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.footer a {
+  color: #BFDBFE; /* Azul claro */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #FFFFFF;
+}
+
+/* Modal (popup) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(30, 58, 138, 0.75); /* azul oscuro semitransparente */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #FFFFFF;
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 0 15px rgba(30, 58, 138, 0.5);
+  text-align: left;
+  position: relative;
+  color: #1E3A8A;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  color: #3B82F6;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #1E3A8A;
+}

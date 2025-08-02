@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letras de Canciones</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Alabanzas</h1>
+    
+    <!-- Buscador de canciones -->
+    <input type="text" id="searchInput" placeholder="Buscar canción..." />
+
+    <!-- Letras del alfabeto -->
+    <div id="letters" class="letters"></div>
+    
+    <!-- Lista de canciones filtradas -->
+    <div id="songs" class="songs"></div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- Modal Informativo -->
+<div id="infoModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+  </div>
+</div>
+
+</body>
+
+<script type="module">
+  // Importa solo lo necesario desde Firebase SDK modular
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+  // Configuración de Firebase (pon tus datos aquí)
+  const firebaseConfig = {
+    apiKey: "AIza....",
+    authDomain: "tu-proyecto.firebaseapp.com",
+    projectId: "tu-proyecto",
+    storageBucket: "tu-proyecto.appspot.com",
+    messagingSenderId: "1234567890",
+    appId: "1:1234567890:web:abcdefg12345"
+  };
+
+  // Inicializar Firebase y Firestore
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Función para obtener canciones
+  async function getSongs() {
+    const songsCol = collection(db, "songs");
+    const songsSnapshot = await getDocs(songsCol);
+    const songsList = songsSnapshot.docs.map(doc => doc.data());
+    return songsList;
+  }
+
+  // Ejemplo para cargar canciones y mostrarlas (debes adaptar con tu lógica)
+  getSongs().then(songs => {
+    console.log(songs);
+    // Aquí puedes asignar songs a tu variable global y llamar a filterSongs()
+  });
+
+  // Función para agregar canción nueva (si quieres usar)
+  async function addSong(title, lyrics) {
+    try {
+      const docRef = await addDoc(collection(db, "songs"), {
+        title: title,
+        lyrics: lyrics
+      });
+      console.log("Documento añadido con ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error al añadir documento: ", e);
+    }
+  }
+
+</script>
+
+<footer class="footer">
+  <div class="footer-content">
+    <a href="#about">Acerca de</a>
+    <a href="#contact">Contacto</a>
+    <a href="#credits">Créditos</a>
+  </div>
+  <p class="footer-copy">&copy; 2025 Cancionero Digital</p>
+</footer>
+</html>
