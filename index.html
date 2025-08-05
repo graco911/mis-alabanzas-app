@@ -33,54 +33,6 @@
 
 </body>
 
-<script type="module">
-  // Importa solo lo necesario desde Firebase SDK modular
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
-  // Configuración de Firebase (pon tus datos aquí)
-  const firebaseConfig = {
-    apiKey: "AIza....",
-    authDomain: "tu-proyecto.firebaseapp.com",
-    projectId: "tu-proyecto",
-    storageBucket: "tu-proyecto.appspot.com",
-    messagingSenderId: "1234567890",
-    appId: "1:1234567890:web:abcdefg12345"
-  };
-
-  // Inicializar Firebase y Firestore
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Función para obtener canciones
-  async function getSongs() {
-    const songsCol = collection(db, "songs");
-    const songsSnapshot = await getDocs(songsCol);
-    const songsList = songsSnapshot.docs.map(doc => doc.data());
-    return songsList;
-  }
-
-  // Ejemplo para cargar canciones y mostrarlas (debes adaptar con tu lógica)
-  getSongs().then(songs => {
-    console.log(songs);
-    // Aquí puedes asignar songs a tu variable global y llamar a filterSongs()
-  });
-
-  // Función para agregar canción nueva (si quieres usar)
-  async function addSong(title, lyrics) {
-    try {
-      const docRef = await addDoc(collection(db, "songs"), {
-        title: title,
-        lyrics: lyrics
-      });
-      console.log("Documento añadido con ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error al añadir documento: ", e);
-    }
-  }
-
-</script>
-
 <footer class="footer">
   <div class="footer-content">
     <a href="#about">Acerca de</a>
